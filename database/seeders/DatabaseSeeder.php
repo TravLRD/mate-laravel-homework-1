@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
             CountiesTableSeeder::class,
             TownsTableSeeder::class,
             PopulationsTableSeeder::class,
+            BlogPostSeeder::class,
         ]);
     }
 }
