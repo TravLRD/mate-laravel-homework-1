@@ -17,10 +17,10 @@ class CreateBlogPostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.

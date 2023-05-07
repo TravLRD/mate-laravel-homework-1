@@ -9,7 +9,7 @@ class BlogPostController extends Controller
 {
     public function index()
     {
-        $posts = BlogPost::all();
+        $posts = BlogPost::orderBy('published_at', 'desc')->get();
         return view('blog.index', compact('posts'));
     }
 
@@ -22,29 +22,43 @@ class BlogPostController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
+            'published_at' => 'nullable|date',
             'content' => 'required|string',
         ]);
+
 
         BlogPost::create($validated);
 
         return redirect()->route('blog.index')->with('status', 'Post created successfully');
     }
 
-    public function edit(BlogPost $post)
+    public function edit($id)
     {
-        return view('blog.edit', compact('post'));
+        $post = BlogPost::findOrFail($id);
+        return view('blog.edit', ['post' => $post]);
     }
 
-    public function update(Request $request, BlogPost $post)
+    public function update(Request $request, $id)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
+        // Validate the request data
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
         ]);
 
-        $post->update($validated);
+        // Find the post with the provided ID
+        $post = BlogPost::findOrFail($id);
 
-        return redirect()->route('blog.index')->with('status', 'Post updated successfully');
+        // Update the post's title, content, and published_at
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+        $post->published_at = $request->input('published_at') ? $request->input('published_at') : null;
+
+        // Save the updated post
+        $post->save();
+
+        // Redirect back to the blog.index route with a success message
+        return redirect()->route('blog.index')->with('success', 'Post updated successfully');
     }
 
     public function destroy(BlogPost $post)

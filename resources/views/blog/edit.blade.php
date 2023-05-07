@@ -7,7 +7,7 @@
   </div>
 
   <div class="w-full max-w-md mx-auto">
-    <form action="{{ route('blog.update', $post->id) }}" method="POST">
+    <form action="{{ route('blog.update', ['blog' => $post->id]) }}" method="POST">
       @csrf
       @method('PUT')
       <div class="mb-4">
@@ -15,6 +15,12 @@
           Title
         </label>
         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" name="title" type="text" placeholder="Post title" value="{{ $post->title }}" required>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="published_at">
+          Publication Date and Time
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="published_at" name="published_at" type="datetime-local" value="{{ $post->published_at ? $post->published_at->format('Y-m-d\TH:i') : '' }}">
       </div>
       <div class="mb-6">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="content">

@@ -23,6 +23,7 @@ class BlogPostSeeder extends Seeder
             $blogPosts[] = [
                 'title' => $faker->sentence(6, true),
                 'content' => $faker->paragraphs(3, true),
+                'published_at' => $faker->dateTimeBetween('-1 year', 'now'),
                 'created_at' => $faker->dateTimeBetween('-1 year', 'now'),
                 'updated_at' => $faker->dateTimeBetween('-1 year', 'now'),
             ];

@@ -11,6 +11,11 @@ class BlogPost extends Model
 
     protected $fillable = [
         'title',
-        'content'
+        'content',
+        'published_at'
+    ];
+
+    protected $casts = [
+        'published_at' => 'datetime'
     ];
 }

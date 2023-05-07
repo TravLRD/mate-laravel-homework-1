@@ -15,6 +15,12 @@
         </label>
         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" name="title" type="text" placeholder="Post title" required>
       </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="published_at">
+          Published At
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="published_at" name="published_at" type="datetime-local" placeholder="Publication date and time">
+      </div>
       <div class="mb-6">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="content">
           Content

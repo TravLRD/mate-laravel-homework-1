@@ -15,9 +15,10 @@
       <img class="w-full h-48 object-cover" src="https://source.unsplash.com/random/800x600" alt="{{ $post->title }}">
       <div class="p-6">
         <h2 class="text-xl font-bold mb-2">{{ $post->title }}</h2>
+        <p class="text-gray-700 text-sm mb-2">{{ $post->published_at ? $post->published_at->format('F j, Y g:i a') : 'Not published' }}</p>
         <p class="text-gray-700 text-sm mb-4">{{ Str::limit($post->content, 100) }}</p>
         <div class="flex items-center justify-between">
-          <a href="{{ route('blog.edit', $post->id) }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-4 rounded shadow">
+          <a href="{{ route('blog.edit', ['blog' => $post->id]) }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-4 rounded shadow">
             Edit
           </a>
           <form action="{{ route('blog.destroy', $post->id) }}" method="POST" class="inline">
@@ -31,6 +32,7 @@
       </div>
     </div>
     @endforeach
+
   </div>
 </div>
 @endsection
