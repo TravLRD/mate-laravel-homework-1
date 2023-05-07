@@ -53,7 +53,7 @@
 
   </header>
 
-  <main class="flex-grow">
+  <main class="flex-grow px-4">
     @yield('content')
   </main>
 
