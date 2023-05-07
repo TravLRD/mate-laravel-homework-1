@@ -32,3 +32,9 @@ Route::get('/contact-messages', [ContactMessageController::class, 'index'])->nam
 use App\Http\Controllers\BlogPostController;
 
 Route::resource('blog', BlogPostController::class);
+
+
+
+use App\Http\Controllers\PhotoController;
+
+Route::resource('gallery', PhotoController::class);
