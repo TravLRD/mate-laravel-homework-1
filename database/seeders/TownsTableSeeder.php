@@ -15,6 +15,7 @@ class TownsTableSeeder extends Seeder
             ['tname' => 'Kecskemét', 'county_id' => 3, 'countyseat' => true, 'countylevel' => true],
             ['tname' => 'Békéscsaba', 'county_id' => 4, 'countyseat' => true, 'countylevel' => true],
             ['tname' => 'Miskolc', 'county_id' => 5, 'countyseat' => true, 'countylevel' => true],
+            ['tname' => 'Cegléd', 'county_id' => 1, 'countyseat' => false, 'countylevel' => false],
         ];
 
         foreach ($towns as $town) {

@@ -13,11 +13,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\DatabaseController;
 
-Route::get('/database', [DatabaseController::class, 'index'])->name('database.index');
-Route::get('/database/create', [DatabaseController::class, 'create'])->name('database.create');
-Route::post('/database', [DatabaseController::class, 'store'])->name('database.store');
+use App\Http\Controllers\HomeController;
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+
+
+use App\Http\Controllers\CountyController;
+
+Route::get('/counties', [CountyController::class, 'index'])->name('counties.index');
+
+
+
+use App\Http\Controllers\TownController;
+
+Route::get('/towns', [TownController::class, 'index'])->name('towns.index');
+Route::get('/towns/create', [TownController::class, 'create'])->name('towns.create');
+Route::post('/towns', [TownController::class, 'store'])->name('towns.store');
+
+
+
+use App\Http\Controllers\PopulationController;
+
+Route::get('/populations', [PopulationController::class, 'index'])->name('populations.index');
 
 
 
